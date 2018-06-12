@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Include">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Include\Systems">
+      <UniqueIdentifier>{662ac36e-d4a1-42b4-a5aa-146acc1a144a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Systems">
+      <UniqueIdentifier>{9a906d4c-c660-4d65-bcfe-1e70a45e2ec4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Include\Utility">
+      <UniqueIdentifier>{1048d158-8179-4c5e-8d5d-d5feb64735af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Include\Scene">
+      <UniqueIdentifier>{d906cc20-ba98-4318-86ff-3848ce48cd77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scene">
+      <UniqueIdentifier>{fe3baebf-fdab-4ddb-a44e-e6be856e77e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="glm">
+      <UniqueIdentifier>{7b1357ba-1745-4f8d-ba4b-d0ddf46646b2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Singleton.h">
+      <Filter>Include\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineTypes.h">
+      <Filter>Include\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="Logger.h">
+      <Filter>Include\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Include\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Engine.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Singleton.cpp">
+      <Filter>Source Files\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="Logger.cpp">
+      <Filter>Source Files\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="Engine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="GCEngine.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
