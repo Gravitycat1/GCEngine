@@ -51,6 +51,15 @@
     <ClInclude Include="EngineTypes.h">
       <Filter>Include\Utility</Filter>
     </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>Include\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="System.h">
+      <Filter>Include\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="SystemManager.h">
+      <Filter>Include\Systems</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Singleton.cpp">
@@ -61,6 +70,12 @@
     </ClCompile>
     <ClCompile Include="Engine.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>Source Files\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="SystemManager.cpp">
+      <Filter>Source Files\Systems</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
