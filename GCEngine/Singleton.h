@@ -16,7 +16,17 @@ namespace engine
 
 	public:
 		// const T& - ask about
-		static const T& GetInstance();
+		static T& GetInstance()
+		{
+			if (m_instance)
+			{
+				return *m_instance;
+			}
+
+			m_instance = new T();
+
+			return *m_instance;
+		}
 		
 	};
 

@@ -4,8 +4,11 @@
 int engine::Engine::init()
 {
 	
+#if !_DEBUG
 
-	Logger::Log("Initalizing the logger.");
+	Logger::Log("Initalizing the game.");
+
+#endif
 
 	return 0;
 }

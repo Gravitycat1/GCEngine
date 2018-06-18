@@ -10,19 +10,20 @@ namespace engine
 	class Logger : public Singleton<Logger>
 	{
 	private:
+		//allows singleton to access protected construtor 
 		friend Singleton;
 
 		ELogType m_currentLevel;
 
 	protected:
 
-		Logger(): m_currentLevel(ELogType::LT_Everything) {}
+		Logger(): m_currentLevel() {}
 	public:
 		
 
-		static void Log(const char* message, ELogType l = ELogType::LT_Everything);
-		ELogType getCurrentLevel() const;
-		void setCurrentLevel(ELogType l);
+		static void Log(const char* message, ELogType l = ELogType::LT_General);
+		static ELogType getCurrentLevel();
+		static void setCurrentLevel(ELogType l);
 
 	};
 }

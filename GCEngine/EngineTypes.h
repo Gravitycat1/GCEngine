@@ -6,7 +6,7 @@ using ubyte = unsigned __int8;
 
 enum class ELogType : ubyte
 {
-	LT_Everything,
+	LT_General,
 	LT_Warnning,
 	LT_Error,
 	LT_TOTAL
