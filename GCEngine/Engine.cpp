@@ -1,6 +1,7 @@
 #include "Engine.h"
 #include "Logger.h"
 
+#include "SDL\SDL.h"
 int engine::Engine::init()
 {
 	

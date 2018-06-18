@@ -33,15 +33,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Singleton.h">
-      <Filter>Include\Systems</Filter>
-    </ClInclude>
-    <ClInclude Include="EngineTypes.h">
-      <Filter>Include\Utility</Filter>
-    </ClInclude>
-    <ClInclude Include="Logger.h">
-      <Filter>Include\Systems</Filter>
-    </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Include</Filter>
     </ClInclude>
@@ -50,6 +41,15 @@
     </ClInclude>
     <ClInclude Include="Engine.h">
       <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Logger.h">
+      <Filter>Include\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton.h">
+      <Filter>Include\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineTypes.h">
+      <Filter>Include\Utility</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
