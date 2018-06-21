@@ -154,8 +154,9 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="Logger.h" />
-    <ClInclude Include="resource.h" />
+    <ClInclude Include="Resource.h" />
     <ClInclude Include="ResourceManager.h" />
+    <ClInclude Include="ShaderProgram.h" />
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="System.h" />
     <ClInclude Include="SystemManager.h" />
@@ -166,6 +167,7 @@
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="Logger.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
+    <ClCompile Include="ShaderProgram.cpp" />
     <ClCompile Include="Singleton.cpp" />
     <ClCompile Include="SystemManager.cpp" />
     <ClCompile Include="Window.cpp" />
