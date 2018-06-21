@@ -21,10 +21,15 @@ namespace engine
 		
 		Window();
 		~Window();
+
 		bool init() override;
 		void update() override;
 		void draw() const override;
 		bool shutdown() override;
+
+	private:
+		bool initSDL();
+		bool shutdownSDL();
 	};
 }
 #endif //_WINDOW

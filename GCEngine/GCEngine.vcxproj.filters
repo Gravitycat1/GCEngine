@@ -28,8 +28,11 @@
     <Filter Include="Source Files\Scene">
       <UniqueIdentifier>{fe3baebf-fdab-4ddb-a44e-e6be856e77e4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="glm">
-      <UniqueIdentifier>{7b1357ba-1745-4f8d-ba4b-d0ddf46646b2}</UniqueIdentifier>
+    <Filter Include="Include\Resources">
+      <UniqueIdentifier>{ee0b79f2-7493-4ba4-90e0-0a088ecf5f79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Resources">
+      <UniqueIdentifier>{a5e30be9-912c-4967-a911-2fdc2028b714}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -60,6 +63,12 @@
     <ClInclude Include="SystemManager.h">
       <Filter>Include\Systems</Filter>
     </ClInclude>
+    <ClInclude Include="Graphics.h">
+      <Filter>Include\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceManager.h">
+      <Filter>Include\Resources</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Singleton.cpp">
@@ -76,6 +85,12 @@
     </ClCompile>
     <ClCompile Include="SystemManager.cpp">
       <Filter>Source Files\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="Graphics.cpp">
+      <Filter>Source Files\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceManager.cpp">
+      <Filter>Source Files\Resources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

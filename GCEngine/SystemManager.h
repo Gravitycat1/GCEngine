@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "Window.h"
+#include "Graphics.h"
 
 namespace engine
 {
@@ -18,12 +19,11 @@ namespace engine
 
 	protected:
 
-		SystemManager() 
-		{
-			m_systems.emplace_back(new Window);
-		}
+		SystemManager();
 
 	public:
+
+		~SystemManager();
 
 		bool init();
 		void update();

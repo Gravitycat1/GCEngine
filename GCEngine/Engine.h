@@ -20,9 +20,8 @@ namespace engine
 		//mainloop
 		void run();
 
-	private:
-		bool initSDL();
-		bool closeSDL();
+	
+		
 	};
 
 }

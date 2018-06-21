@@ -3,15 +3,17 @@
 #include "SystemManager.h"
 
 
-#include "SDL\SDL.h"
+#include <SDL\SDL.h>
+#include <GL\glew.h>
 
 #include <chrono>
 #include <iostream>
+#include <Windows.h>
 
 engine::Engine::~Engine()
 {
 	SystemManager::GetInstance().shutdown();
-	closeSDL();
+	
 }
 
 int engine::Engine::init()
@@ -23,10 +25,7 @@ int engine::Engine::init()
 
 #endif
 
-	if(!initSDL())
-	{
-		return 1;
-	}
+	
 
 	if (!SystemManager::GetInstance().init())
 		return 2;
@@ -39,10 +38,40 @@ void engine::Engine::run()
 	bool quit = false;
 	SDL_Event e;
 
+	
+
 	//infinte engine loop
 	while (!quit) 
 	{
-		const auto start = std::chrono::high_resolution_clock::now();
+		//timing
+		{
+			// counts how many frames have passed
+			static uint64_t frameCounter = 0;
+			// count how many seconds have passed
+			static double elapsedSeconds = 0.0;
+
+			static std::chrono::high_resolution_clock clock;
+			static auto t0 = clock.now();
+		
+			++frameCounter;
+			auto t1 = clock.now();
+			auto deltaTime = t1 - t0;
+			t0 = t1;
+
+			elapsedSeconds += deltaTime.count() * 1e-9;
+			if (elapsedSeconds > 1.0)
+			{
+				char buffer[500];
+				auto fps = frameCounter / elapsedSeconds;
+				sprintf_s(buffer, 500, "FPS: %f\n", fps);
+
+				std::cout << buffer << std::endl;
+
+				frameCounter = 0;
+				elapsedSeconds = 0.0;
+			}
+		}
+		
 
 		//getting all the events
 		while (SDL_PollEvent(&e) != 0)
@@ -61,32 +90,22 @@ void engine::Engine::run()
 		SystemManager::GetInstance().update();
 		SystemManager::GetInstance().draw();
 
-		const auto end = std::chrono::high_resolution_clock::now();
-		const auto durationMS = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+		
+		
+		//todo: remove this when adding a mesh
+		glEnableClientState( GL_COLOR_ARRAY);
 
-		std::cout << durationMS.count() << "ms" << std::endl;
+		//starts drawing
+		glBegin(GL_TRIANGLES);
+
+		glColor3b(1.0f, 0.0f, 0.0f);
+		glVertex2f(0, 0);
+		glVertex2f(0, 500);
+		glVertex2f(500, 500);
+
+		//ends drawing
+		glEnd();
+
 	}
 }
 
-bool engine::Engine::initSDL()
-{
-
-	// assert() <- us this instead
-	if (SDL_Init(SDL_INIT_EVERYTHING) < 0)
-	{
-		Logger::Log("Failed to init SDL", ELogType::LT_Error);
-
-		return false;
-	}
-	
-
-	return true;
-}
-
-bool engine::Engine::closeSDL()
-{
-
-	SDL_Quit();
-
-	return true;
-}
