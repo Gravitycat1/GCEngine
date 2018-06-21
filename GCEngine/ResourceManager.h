@@ -12,6 +12,7 @@ namespace engine
 
 	class ResourceManager : public Singleton<ResourceManager>
 	{
+		friend Singleton;
 
 		std::unordered_map<std::string, Resource*> m_resources;
 
