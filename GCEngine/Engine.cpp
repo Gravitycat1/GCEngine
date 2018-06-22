@@ -2,11 +2,13 @@
 #include "Logger.h"
 #include "SystemManager.h"
 #include "ShaderProgram.h"
+#include "MeshData.h"
+#include "GameObject.h"
+#include "MeshComponent.h"
 
-
-#include <SDL\SDL.h>
 #include <GL\glew.h>
 
+#include <vector>
 #include <chrono>
 #include <iostream>
 #include <Windows.h>
@@ -43,14 +45,20 @@ unsigned indices[] =
 
 engine::ShaderProgram sp(vertexShaderSource, fragmentShaderSource);
 
+engine::MeshData md(std::vector<float>(vertices, vertices + sizeof(vertices) / sizeof(vertices[0])),
+	std::vector<int>(indices, indices + sizeof(indices) / sizeof(indices[0])));
 unsigned int VAO, VBO, EBO;
+
+engine::MeshComponent mc(&md, &sp);
+
+engine::GameObject go;
 
 engine::Engine::~Engine()
 {
 
-	glDeleteVertexArrays(1, &VAO);
+	/*glDeleteVertexArrays(1, &VAO);
 	glDeleteVertexArrays(1, &VBO);
-	glDeleteVertexArrays(1, &EBO);
+	glDeleteVertexArrays(1, &EBO);*/
 
 	SystemManager::GetInstance().shutdown();
 	
@@ -59,7 +67,7 @@ engine::Engine::~Engine()
 int engine::Engine::init()
 {
 	
-#if !_DEBUG
+#if _DEBUG
 
 	Logger::Log("Initalizing the game.");
 
@@ -70,26 +78,32 @@ int engine::Engine::init()
 	if (!SystemManager::GetInstance().init())
 		return 2;
 
+	md.init();
 	sp.init();
 
-	//creating the buffer
-	glGenVertexArrays(1, &VBO);
-	glGenBuffers(1, &VBO);
-	glGenBuffers(1, &EBO);
+	mc.init();
 
-	glBindVertexArray(VAO);
+	go.addComponent (&mc);
 
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+	////creating the buffer
+	//glGenVertexArrays(1, &VBO);
+	//glGenBuffers(1, &VBO);
+	//glGenBuffers(1, &EBO);
 
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-	glEnableVertexAttribArray(0);
+	//glBindVertexArray(VAO);
 
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	glBindVertexArray(0);
+	//glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	//glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+	//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+	//glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+
+	//glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+	//glEnableVertexAttribArray(0);
+
+	//glBindBuffer(GL_ARRAY_BUFFER, 0);
+	//glBindVertexArray(0);
 
 	return 0;
 }
@@ -97,12 +111,9 @@ int engine::Engine::init()
 void engine::Engine::run()
 {
 	bool quit = false;
-	SDL_Event e;
-
-	
 
 	//infinte engine loop
-	while (!quit) 
+	while (!SystemManager::GetInstance().GetSystems<InputSystem>()->wasCloseRequested())
 	{
 		//timing
 		{
@@ -134,27 +145,28 @@ void engine::Engine::run()
 		}
 		
 
-		//getting all the events
-		while (SDL_PollEvent(&e) != 0)
-		{
-			switch (e.type)
-			{
-			case SDL_QUIT:
-				quit = true;
-				break;
 
-			default:
-				break;
-			}
-
-		}
 		SystemManager::GetInstance().update();
+		go.update();
+
+
+
 		SystemManager::GetInstance().draw();
+		go.draw();
+
+
+		InputSystem* input = SystemManager::GetInstance().GetSystems<InputSystem>();
+
+		if (input->wasKeyPressed(SDLK_SPACE))
+		{
+			std::cout << "pressing spacebar" << std::endl;
+		}
+
 
 		// drawing square
-		sp.use();
+		/*sp.use();
 		glBindVertexArray(VAO);
-		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);*/
 		
 		
 		////todo: remove this when adding a mesh

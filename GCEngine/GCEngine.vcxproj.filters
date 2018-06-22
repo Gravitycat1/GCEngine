@@ -72,6 +72,18 @@
     <ClInclude Include="Resource.h">
       <Filter>Include\Resources</Filter>
     </ClInclude>
+    <ClInclude Include="Component.h">
+      <Filter>Include\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshData.h">
+      <Filter>Include\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshComponent.h">
+      <Filter>Include\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="InputSystem.h">
+      <Filter>Include\Systems</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Singleton.cpp">
@@ -97,6 +109,18 @@
     </ClCompile>
     <ClCompile Include="ShaderProgram.cpp">
       <Filter>Source Files\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Source Files\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshData.cpp">
+      <Filter>Source Files\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshComponent.cpp">
+      <Filter>Source Files\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="InputSystem.cpp">
+      <Filter>Source Files\Systems</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
